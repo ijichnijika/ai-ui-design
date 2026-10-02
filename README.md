@@ -89,18 +89,22 @@ ai-ui-design/
     └── ai-ui-design/
         ├── SKILL.md                            # 核心执行规范与阶段指引
         ├── assets/
-        │   └── style-explorer.html             # 风格对比页离线容器模板
+        │   ├── style-explorer.html             # 风格对比页离线容器模板
+        │   └── templates/
+        │       └── design-brief.md             # 设计说明沉淀模板
         ├── scripts/
-        │   └── build_explorer.py               # 风格对比页自动化生成脚本
+        │   ├── build_explorer.py               # 风格对比页自动化生成脚本
+        │   ├── check_contrast.py               # WCAG 2.x 与 OKLCH 相对亮度对比度校验
+        │   └── screenshot.py                   # 零依赖 CDP 无头截图与页面体检
         └── references/
+            ├── build-and-verify.md             # 制作检查、CDP 截图取证与还原标准
             ├── design-direction.md             # 调性刻度、生成引擎、首屏骨架与方向卡
-            ├── visual-language.md              # 焦点、空间、排版、色彩与 AI 味排查
-            ├── visual-review.md                # 独立评审协议、交接清单与模板
-            ├── style-explorer.md               # 风格对比页使用规范与 manifest 说明
-            ├── media.md                        # 素材选择、生成资产与视频随动
-            ├── imagery.md                      # 配图生成 7 步公式与融边接力
+            ├── media.md                        # 素材选择、提示词公式、图码分工与视频
+            ├── mockup-to-production.md         # 小样形态选择与主流框架 Token 平移落地
             ├── motion.md                       # 动效手感、物理参数映射与时长规范
-            └── layout-and-viewport.md          # 截图精准还原与视口安全区验证
+            ├── style-explorer.md               # 风格对比页使用规范与 manifest 说明
+            ├── visual-language.md              # 焦点、空间、排版、色彩与 AI 味排查
+            └── visual-review.md                # 独立评审协议、交接清单与模板
 ```
 
 ---

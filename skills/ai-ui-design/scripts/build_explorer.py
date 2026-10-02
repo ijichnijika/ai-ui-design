@@ -53,7 +53,7 @@ class AssetCheck(HTMLParser):
     def handle_starttag(self, tag: str, attrs: list) -> None:
         attrs = dict(attrs)
         if tag == "head" and self.head_position is None:
-            self.head_position = (self.getpos(), self.getstarttag_text() if hasattr(self, "getstarttag_text") else self.get_starttag_text())
+            self.head_position = (self.getpos(), self.get_starttag_text())
         if tag in ("iframe", "frame", "object", "embed"):
             raise ValueError("候选 HTML 不支持嵌套文档；请提供静态内容或截图")
         if tag == "style":
@@ -304,8 +304,8 @@ def build(manifest: Path, output: Path, *, force: bool = False) -> dict:
 
 
 def main() -> int:
-    if sys.version_info < (3, 10):
-        print("需要 Python 3.10 或更新版本", file=sys.stderr)
+    if sys.version_info < (3, 9):
+        print("需要 Python 3.9 或更新版本", file=sys.stderr)
         return 2
     parser = argparse.ArgumentParser(description="把本地候选与 manifest 组装成独立风格对比 HTML")
     parser.add_argument("manifest", type=Path)

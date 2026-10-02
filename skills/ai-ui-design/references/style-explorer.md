@@ -6,11 +6,11 @@
 
 在任务目录放 `manifest.json` 和候选文件（必须位于 manifest 所在目录或其子目录）：
 
-- HTML 候选是带 `head` 的完整文档，CSS 写在页内；图片、字体、视频用相对路径（如 `img/hero.webp`），生成器自动内嵌。
+- HTML 候选是带 `head` 的完整文档，CSS 写在页内；图片、字体、视频用相对路径（如 `img/hero.webp`），生成器自动内嵌。其余 `src`、`href` 只写 `#` 锚点：站内路径、外链和远程字体都会让生成器拒绝。
 - 候选类型：
   - `kind: "html"`：静态视觉样本，脚本不执行。加 `"interactive": true` 运行内联 JS，可点击试玩（自动注入内存版存储垫片）。
   - `kind: "image"`：PNG / JPEG / WebP 截图。
-  - `kind: "url"`：用 `"url"` 字段（不是 `source`）指向本机 dev server，在 iframe 中运行完整应用。
+  - `kind: "url"`：用 `"url"` 字段（不是 `source`）指向本机 dev server，在 iframe 中运行完整应用；已有工程的临时路由小样用这种。
   - `"baseline": true`：现状版本，固定排第一并标为"现状"，至多一个。
 
 ```json
@@ -55,7 +55,7 @@
 
 ## 生成
 
-需要 Python 3.10+：
+需要 Python 3.9+：
 
 ```bash
 python3 <skill>/scripts/build_explorer.py <任务目录>/manifest.json --output <任务目录>/style-explorer.html
@@ -69,5 +69,5 @@ python3 <skill>/scripts/build_explorer.py <任务目录>/manifest.json --output 
 
 - **并排 / 单张**：默认等大并排，在桌面（1280×900）或手机（390×844）视口比较块面。点击画面进入单张查看，侧栏显示色值、字体与特征；`←` `→` 切换，`P` 选定，`Esc` 返回。
 - **实际尺寸 100%**：在单张查看里检查真实字号、中文排版与按钮边界。
-- **点选标注**：开启后点击候选中任意元素，在原位写修改意见（自动附带标签、CSS 选择器与文本片段）；可写入全局备注并复制，或只复制这一条。
+- **点选标注**：开启后点击 HTML 候选中的任意元素，在原位写修改意见（自动附带标签、CSS 选择器与文本片段）；可写入全局备注并复制，或只复制这一条。本机地址和截图候选不支持点选，意见写进备注。
 - **选择即复制**：点"选择"会把方案名、轮次和备注复制到剪贴板，粘贴回对话即为用户的决策。
